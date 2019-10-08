@@ -1121,7 +1121,6 @@ class PageQuery {
      *                              array(0, '...') =>  0 = normal row item (not heading)
      */
     function mgroup(&$sort_array, $keys, $group_opts = array()) {
-        $level = count($group_opts['key']) - 1;
         $prevs = array();
         $results = array();
         $idx = 0;
@@ -1137,6 +1136,7 @@ class PageQuery {
                 $results[] = $result;
             }
         } else {
+            $level = count($group_opts['key']) - 1;
             foreach($sort_array as $row) {
                 $this->_add_heading($results, $sort_array, $group_opts, $level, $idx, $prevs);
                 $result = array(0); // basic item (page link) is level 0
